@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Personal Website</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        #eyes {
+            position: fixed;
+            width: 50px;
+            height: 50px;
+            background-color: transparent;
+            border-radius: 50%;
+            border: 3px solid white;
+            z-index: 9999;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="eyes"></div>
+    <h1>Your Name</h1>
+    <h2>Neurologist & Bioengineer</h2>
+    <p>Random Fact: I once built a miniature Tesla coil in my garage.</p>
+    <p>Career Goal: To revolutionize neurotechnology and advance humanity's understanding of the brain.</p>
+    <p>Favorite Color: Black, with touches of blue, green, and high-contrast red.</p>
+    <p>Welcome to my personal webpage. Here, you'll find insights into my work, interests, and aspirations.</p>
+
+    <script>
+        document.addEventListener('mousemove', function(e) {
+            var eyes = document.getElementById('eyes');
+            var mouseX = e.clientX;
+            var mouseY = e.clientY;
+            var eyePosX = eyes.offsetLeft + eyes.offsetWidth / 2;
+            var eyePosY = eyes.offsetTop + eyes.offsetHeight / 2;
+            var deltaX = mouseX - eyePosX;
+            var deltaY = mouseY - eyePosY;
+            var angle = Math.atan2(deltaY, deltaX);
+            var distance = Math.min(25, Math.sqrt(deltaX * deltaX + deltaY * deltaY));
+            var eyeX = distance * Math.cos(angle);
+            var eyeY = distance * Math.sin(angle);
+            eyes.style.transform = 'translate(' + eyeX + 'px, ' + eyeY + 'px)';
+        });
+    </script>
+</body>
+</html>
